@@ -1,23 +1,3 @@
-# Tate Staples 
-<sub> Duke ECE/CS Student. Class of 26 </sub>
+This repo contains my personal portfolio, created with Sass and JavaScript and based on work from Ryan Fitzgerald. With his template as a starting point, I made style and content changes to adapt it for my own uses. Now, it highlights my education, experience, and current projects. Check it out to learn more about my interests and skills!
 
-## Projects
-### Duke Human and Robotics Lab
-Dukes HAL lab studies interactions between how to improve human-robot interactions. 
-I have been working for this lab since the fall of 2020 and explored topics from robotics 
-
-#### Assited Interface for Robotic Arm
-This project studied how well people could use computer assisted controls to manipulate various objects with a robotic arm. First I built up two graphic interfaces. 
-
-###### Manual Interface
-###### Supervisory Interface
-
-#### Aircraft Carrier
-
-#### Autonomous Vehicle Disengagement Study
-### Robotics
-
-
-## Experience
-
-## Skills
+(Licensed under the MIT license)
