@@ -355,5 +355,38 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
 </body>
-
+<script>
+    async function getTarget() {
+        console.log(1);
+        const response = await fetch("./content/assassins.json");
+        const source = await response.json();
+        let list = source["original"];
+        let name = document.getElementById('name').value.toLowerCase().trim();
+        let index = list.indexOf(name);
+        let i2 = -1;
+        for (i=0; i<list.length; i++) {
+            let n = list[i]
+            if (name === n.substring(0, n.length-1)) {
+                i2 = i;
+                break;
+            }
+        }
+        if (index === -1) {
+            if (i2 === -1) {
+                alert("your name is not found in our database");
+            } else {
+                alert("Your name is shared by someone else. Add your last initial to clarify who you are (ie TateS)")
+            }
+        }
+        else {
+            let name = list[(index+1) % list.length];
+            if(name === "Jon") {name = "Jon Kupe"}
+            else if (name === "John") {name = "John Bloch"}
+            alert("Your target is " + name);
+        }
+        return true;
+    }
+</script>
+<textarea id="name" name="message" placeholder="Your first name (as it appears in GroupMe)" required></textarea>
+<button onclick="getTarget()">Send</button>
 </html>

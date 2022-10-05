@@ -61,17 +61,15 @@
         }
         else {
             let name = list[(index+1) % list.length];
+            if(name === "Jon") {name = "Jon Kupe"}
+            else if (name === "John") {name = "John Bloch"}
             alert("Your target is " + name);
         }
         return true;
     }
 </script>
-<div id="contact">
-    <h2>Get in Touch</h2>
-    <div id="contact-form">
-            <textarea id="name" name="message" placeholder="Your first name (as it appears in GroupMe)" required></textarea>
-            <button onclick="getTarget()">Send</button>
-    </div>
+<textarea id="name" name="message" placeholder="Your first name (as it appears in GroupMe)" required></textarea>
+<button onclick="getTarget()">Send</button>
     <!-- End #contact-form -->
 </div>
 
