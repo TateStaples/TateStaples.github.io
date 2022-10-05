@@ -1,0 +1,84 @@
+<!--<!DOCTYPE html>-->
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Waves Assassins</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2 class="heading">Waves Assassins</h2>
+            </div>
+            <div class="col-md-8">
+                <p>
+                    Welcome to Assassins! This will be the dashboard for interacting with our game.
+                    Come here to check your target.
+                    All names are in the format you sent in GroupMe.
+                    People with the same first name will also have a last intial clarifying who they are.
+                    Also note that Jon is Jon Kupe and John is John Bloch.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End #about -->
+
+
+<script>
+    async function getTarget() {
+        console.log(1);
+        const response = await fetch("./content/assassins.json");
+        const source = await response.json();
+        let list = source["original"];
+        let name = document.getElementById('name').value.toLowerCase().trim();
+        let index = list.indexOf(name);
+        let i2 = -1;
+        for (i=0; i<list.length; i++) {
+            let n = list[i]
+            if (name === n.substring(0, n.length-1)) {
+                i2 = i;
+                break;
+            }
+        }
+        if (index === -1) {
+            if (i2 === -1) {
+                alert("your name is not found in our database");
+            } else {
+                alert("Your name is shared by someone else. Add your last initial to clarify who you are (ie TateS)")
+            }
+        }
+        else {
+            let name = list[(index+1) % list.length];
+            alert("Your target is " + name);
+        }
+        return true;
+    }
+</script>
+<div id="contact">
+    <h2>Get in Touch</h2>
+    <div id="contact-form">
+            <textarea id="name" name="message" placeholder="Your first name (as it appears in GroupMe)" required></textarea>
+            <button onclick="getTarget()">Send</button>
+    </div>
+    <!-- End #contact-form -->
+</div>
+
+<!-- End #contact -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/scripts.min.js"></script>
+</body>
+
+</html>
